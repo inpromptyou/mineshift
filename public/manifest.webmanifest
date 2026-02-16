@@ -1,7 +1,7 @@
 {
-  "name": "MineShift - Mining Operations Handover",
-  "short_name": "MineShift",
-  "description": "Structured shift handover for mining operations",
+  "name": "ShiftSync - Shift Handover Platform",
+  "short_name": "ShiftSync",
+  "description": "Structured shift handover for every industry",
   "start_url": "/dashboard",
   "display": "standalone",
   "background_color": "#111114",

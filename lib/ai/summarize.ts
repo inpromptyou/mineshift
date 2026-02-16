@@ -58,7 +58,7 @@ export class ShiftSummarizer {
   private static buildSummaryPrompt(shift: Shift, options: SummaryOptions): string {
     const sections = [];
     
-    sections.push(`# Mining Shift Handover Summary
+    sections.push(`# Shift Handover Summary
     
 Shift Details:
 - Shift ID: ${shift.shiftId}

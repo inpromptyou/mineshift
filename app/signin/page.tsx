@@ -18,7 +18,7 @@ export default function SignInPage() {
 
     // MVP: accept any credentials, store in localStorage
     try {
-      localStorage.setItem('mineshift_user', JSON.stringify({
+      localStorage.setItem('shiftsync_user', JSON.stringify({
         email,
         name: email.split('@')[0],
         role: 'supervisor',
@@ -41,7 +41,7 @@ export default function SignInPage() {
           <div className="w-10 h-10 rounded-lg bg-amber-500 flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M8 1L2 6v8h4v-4h4v4h4V6L8 1z" fill="#000" strokeWidth="0"/></svg>
           </div>
-          <span className="text-xl font-semibold tracking-tight text-white">MineShift</span>
+          <span className="text-xl font-semibold tracking-tight text-white">ShiftSync</span>
         </div>
 
         {/* Sign in card */}
@@ -98,7 +98,7 @@ export default function SignInPage() {
           <div className="mt-6 pt-6 border-t border-white/[0.06] text-center">
             <p className="text-[13px] text-gray-600">
               Need access?{' '}
-              <a href="mailto:hello@mineshift.com" className="text-amber-500 hover:text-amber-400 transition-colors">
+              <a href="mailto:hello@shiftsync.com" className="text-amber-500 hover:text-amber-400 transition-colors">
                 Contact your site admin
               </a>
             </p>

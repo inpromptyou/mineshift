@@ -69,7 +69,7 @@ export class AuthManager {
   
   private async initializeMockAuth(): Promise<void> {
     // Simulate existing session
-    const savedUserId = localStorage.getItem('mineshift_user_id');
+    const savedUserId = localStorage.getItem('shiftsync_user_id');
     if (savedUserId) {
       const user = MOCK_USERS.find(u => u.id === savedUserId);
       if (user) {
@@ -115,7 +115,7 @@ export class AuthManager {
     currentUser = user;
     
     // Save to localStorage for persistence
-    localStorage.setItem('mineshift_user_id', user.id);
+    localStorage.setItem('shiftsync_user_id', user.id);
     
     return this.session;
   }
@@ -124,7 +124,7 @@ export class AuthManager {
   async signOut(): Promise<void> {
     this.session = null;
     currentUser = null;
-    localStorage.removeItem('mineshift_user_id');
+    localStorage.removeItem('shiftsync_user_id');
   }
   
   // Get current session

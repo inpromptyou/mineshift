@@ -27,7 +27,7 @@ export interface ClientDatabase extends Dexie {
   meta: Table<{ key: string; value: unknown; updatedAt: Date }>;
 }
 
-class MineShiftDB extends Dexie implements ClientDatabase {
+class ShiftSyncDB extends Dexie implements ClientDatabase {
   // Op-log table
   ops!: Table<LocalOp>;
   
@@ -44,7 +44,7 @@ class MineShiftDB extends Dexie implements ClientDatabase {
   meta!: Table<{ key: string; value: unknown; updatedAt: Date }>;
   
   constructor() {
-    super('MineShiftDB');
+    super('ShiftSyncDB');
     
     this.version(1).stores({
       // Op-log with indexes for sync and query performance
@@ -94,7 +94,7 @@ class MineShiftDB extends Dexie implements ClientDatabase {
 }
 
 // Singleton instance
-export const clientDb = new MineShiftDB();
+export const clientDb = new ShiftSyncDB();
 
 // Utility functions for common operations
 export class ClientDBManager {

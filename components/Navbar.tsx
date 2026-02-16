@@ -35,7 +35,7 @@ export default function Navbar() {
               <div className="w-7 h-7 rounded-md bg-amber-500 flex items-center justify-center">
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1L2 6v8h4v-4h4v4h4V6L8 1z" fill="#000" strokeWidth="0"/></svg>
               </div>
-              <span className="text-[14px] font-semibold tracking-tight">MineShift</span>
+              <span className="text-[14px] font-semibold tracking-tight">ShiftSync</span>
               <span className={`w-1.5 h-1.5 rounded-full ${isOnline ? 'bg-green-500' : 'bg-red-500'}`} />
             </Link>
 

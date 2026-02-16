@@ -9,15 +9,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'MineShift - Mining Operations Handover',
-  description: 'Structured shift handover for mining operations with offline-first capability, audit-grade tracking, and AI-powered summaries.',
-  keywords: 'mining, shift handover, operations, safety, production, equipment, audit, offline',
-  authors: [{ name: 'MineShift' }],
-  creator: 'MineShift',
-  publisher: 'MineShift',
+  title: 'ShiftSync - Structured Shift Handover',
+  description: 'Structured shift handover for every industry with offline-first capability, audit-grade tracking, and AI-powered summaries.',
+  keywords: 'shift handover, operations, safety, production, equipment, audit, offline, mining, hospitality, healthcare, manufacturing',
+  authors: [{ name: 'ShiftSync' }],
+  creator: 'ShiftSync',
+  publisher: 'ShiftSync',
   
   // PWA Metadata
-  applicationName: 'MineShift',
+  applicationName: 'ShiftSync',
   manifest: '/manifest.webmanifest',
   
   // Mobile optimizations
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   // Apple PWA support
   appleWebApp: {
     capable: true,
-    title: 'MineShift',
+    title: 'ShiftSync',
     statusBarStyle: 'black-translucent',
     startupImage: '/icons/apple-splash-2048-2732.jpg',
   },
@@ -46,16 +46,16 @@ export const metadata: Metadata = {
   // Open Graph
   openGraph: {
     type: 'website',
-    siteName: 'MineShift',
-    title: 'MineShift - Mining Operations Handover',
-    description: 'Professional shift handover system for mining operations.',
-    url: 'https://mineshift.app',
+    siteName: 'ShiftSync',
+    title: 'ShiftSync - Structured Shift Handover',
+    description: 'Structured shift handover platform for every industry.',
+    url: 'https://shiftsync.app',
     images: [
       {
         url: '/icons/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'MineShift - Mining Operations Handover',
+        alt: 'ShiftSync - Structured Shift Handover',
       },
     ],
   },
@@ -63,8 +63,8 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: 'summary_large_image',
-    title: 'MineShift - Mining Operations Handover',
-    description: 'Professional shift handover system for mining operations.',
+    title: 'ShiftSync - Structured Shift Handover',
+    description: 'Structured shift handover platform for every industry.',
     images: ['/icons/og-image.png'],
   },
   
@@ -170,7 +170,7 @@ export default function RootLayout({
               pwaInstallBanner.innerHTML = \`
                 <div class="flex items-center justify-between">
                   <div>
-                    <h4 class="font-semibold">Install MineShift</h4>
+                    <h4 class="font-semibold">Install ShiftSync</h4>
                     <p class="text-sm opacity-90">Install the app for offline access and better performance</p>
                   </div>
                   <div class="flex gap-2">
