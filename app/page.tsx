@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function HomePage() {
   return (
@@ -16,26 +15,16 @@ export default function HomePage() {
           <div className="flex items-center gap-6">
             <Link href="#features" className="text-[13px] text-gray-400 hover:text-white transition-colors hidden sm:block">Features</Link>
             <Link href="#roi" className="text-[13px] text-gray-400 hover:text-white transition-colors hidden sm:block">ROI</Link>
-            <Link href="/dashboard" className="text-[13px] bg-white text-black font-medium px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+            <Link href="/signin" className="text-[13px] bg-white text-black font-medium px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
               Sign in
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero with background image */}
+      {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1562078809-c5391dc9f390?w=1920&q=80&auto=format" 
-            alt="Open pit mine operations"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0C] via-[#0A0A0C]/90 to-[#0A0A0C]/60"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-[#0A0A0C]/40"></div>
-        </div>
-        
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-transparent"></div>
         <div className="relative max-w-6xl mx-auto px-6 py-32">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-4 py-1.5 mb-8">
@@ -52,10 +41,10 @@ export default function HomePage() {
               offline and holds up under audit.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="/dashboard" className="bg-amber-500 hover:bg-amber-400 text-black font-semibold px-7 py-3.5 rounded-lg transition-colors text-[15px]">
+              <Link href="/signin" className="bg-amber-500 hover:bg-amber-400 text-black font-semibold px-7 py-3.5 rounded-lg transition-colors text-[15px]">
                 Request demo
               </Link>
-              <Link href="#how-it-works" className="border border-white/15 hover:border-white/25 text-gray-300 font-medium px-7 py-3.5 rounded-lg transition-colors text-[15px] backdrop-blur-sm">
+              <Link href="#how-it-works" className="border border-white/15 hover:border-white/25 text-gray-300 font-medium px-7 py-3.5 rounded-lg transition-colors text-[15px]">
                 See how it works
               </Link>
             </div>
@@ -87,42 +76,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Problem section with image */}
+      {/* Problem section */}
       <section className="py-24" id="how-it-works">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-[13px] text-amber-500 font-medium uppercase tracking-widest mb-4">The problem</p>
-              <h2 className="text-3xl font-bold tracking-tight mb-6">You already know this is broken</h2>
-              <p className="text-gray-400 leading-relaxed mb-8">
-                Night shift didn&apos;t mention the bearing temp on Crusher 2. 
-                The action from Tuesday never got closed out. 
-                The auditor wants to know who signed off on the risk assessment. 
-                Sound familiar?
-              </p>
-              <div className="space-y-5">
-                {[
-                  { num: '01', title: 'Information loss', desc: 'Critical details disappear between shifts. No searchable history. No accountability.' },
-                  { num: '02', title: 'Manual reporting', desc: 'Supervisors spend 30-60 minutes per handover writing reports instead of supervising.' },
-                  { num: '03', title: 'Audit exposure', desc: 'When regulators ask "who knew what, when?" — you can\'t answer definitively.' },
-                ].map(item => (
-                  <div key={item.num} className="flex gap-4">
-                    <span className="text-[12px] font-mono text-amber-500/50 mt-0.5">{item.num}</span>
-                    <div>
-                      <h3 className="text-[15px] font-semibold mb-1">{item.title}</h3>
-                      <p className="text-[14px] text-gray-500 leading-relaxed">{item.desc}</p>
-                    </div>
+          <div className="max-w-2xl">
+            <p className="text-[13px] text-amber-500 font-medium uppercase tracking-widest mb-4">The problem</p>
+            <h2 className="text-3xl font-bold tracking-tight mb-6">You already know this is broken</h2>
+            <p className="text-gray-400 leading-relaxed mb-8">
+              Night shift didn&apos;t mention the bearing temp on Crusher 2. 
+              The action from Tuesday never got closed out. 
+              The auditor wants to know who signed off on the risk assessment. 
+              Sound familiar?
+            </p>
+            <div className="space-y-5">
+              {[
+                { num: '01', title: 'Information loss', desc: 'Critical details disappear between shifts. No searchable history. No accountability.' },
+                { num: '02', title: 'Manual reporting', desc: 'Supervisors spend 30-60 minutes per handover writing reports instead of supervising.' },
+                { num: '03', title: 'Audit exposure', desc: 'When regulators ask "who knew what, when?" — you can\'t answer definitively.' },
+              ].map(item => (
+                <div key={item.num} className="flex gap-4">
+                  <span className="text-[12px] font-mono text-amber-500/50 mt-0.5">{item.num}</span>
+                  <div>
+                    <h3 className="text-[15px] font-semibold mb-1">{item.title}</h3>
+                    <p className="text-[14px] text-gray-500 leading-relaxed">{item.desc}</p>
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative rounded-2xl overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1580058572462-98e2c0e0e2f0?w=800&q=80&auto=format" 
-                alt="Mining haul truck"
-                className="w-full h-[500px] object-cover rounded-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C]/60 to-transparent rounded-2xl"></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -141,35 +120,18 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { 
-                img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80&auto=format',
-                title: 'Structured handover',
-                desc: 'Safety, production, equipment, and issues — pre-built sections that match how your crews actually talk.',
-              },
-              { 
-                img: 'https://images.unsplash.com/photo-1557761469-7eb05db7abd5?w=600&q=80&auto=format',
-                title: 'Offline-first architecture',
-                desc: 'Works underground, in the pit, or during outages. Data syncs automatically when connectivity returns.',
-              },
-              { 
-                img: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80&auto=format',
-                title: 'Immutable audit trail',
-                desc: 'Every entry is cryptographically hashed and timestamped. Tamper-evident by design.',
-              },
+              { icon: '🔄', title: 'Structured handover', desc: 'Safety, production, equipment, and issues — pre-built sections that match how your crews actually talk.' },
+              { icon: '📡', title: 'Offline-first architecture', desc: 'Works underground, in the pit, or during outages. Data syncs automatically when connectivity returns.' },
+              { icon: '🔒', title: 'Immutable audit trail', desc: 'Every entry is cryptographically hashed and timestamped. Tamper-evident by design.' },
             ].map(f => (
-              <div key={f.title} className="bg-white/[0.02] border border-white/[0.06] rounded-2xl overflow-hidden group">
-                <div className="h-48 overflow-hidden">
-                  <img src={f.img} alt={f.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-[15px] font-semibold mb-2">{f.title}</h3>
-                  <p className="text-[14px] text-gray-500 leading-relaxed">{f.desc}</p>
-                </div>
+              <div key={f.title} className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
+                <div className="text-3xl mb-4">{f.icon}</div>
+                <h3 className="text-[15px] font-semibold mb-2">{f.title}</h3>
+                <p className="text-[14px] text-gray-500 leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
 
-          {/* More features list */}
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             {[
               { title: 'Action tracking', desc: 'Assign actions with owners, due times, and priority. Track from open to evidence-verified closure.' },
@@ -211,7 +173,7 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            {/* App preview */}
+            {/* App preview mockup */}
             <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
               <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/[0.06]">
                 <div>
@@ -266,19 +228,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Full-width image break */}
-      <section className="relative h-[400px]">
-        <img 
-          src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=1920&q=80&auto=format" 
-          alt="Aerial view of mine site"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[#0A0A0C]/70"></div>
-        <div className="absolute inset-0 flex items-center justify-center text-center">
-          <div className="max-w-2xl px-6">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Built for Australian conditions</h2>
-            <p className="text-gray-300 leading-relaxed">Pilbara heat. Goldfields dust. Underground dead zones. If your crew can get there, MineShift works there.</p>
-          </div>
+      {/* Australian conditions banner */}
+      <section className="py-20 bg-white/[0.02] border-y border-white/[0.06]">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold tracking-tight mb-4">Built for Australian conditions</h2>
+          <p className="text-gray-300 leading-relaxed">Pilbara heat. Goldfields dust. Underground dead zones. If your crew can get there, MineShift works there.</p>
         </div>
       </section>
 
@@ -327,23 +281,15 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920&q=80&auto=format" 
-            alt="Industrial mining landscape"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[#0A0A0C]/85"></div>
-        </div>
-        <div className="relative max-w-2xl mx-auto px-6 text-center">
+      <section className="py-24 bg-white/[0.02] border-t border-white/[0.06]">
+        <div className="max-w-2xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight mb-4">Try it on one crew. See what happens.</h2>
           <p className="text-gray-300 mb-10 leading-relaxed">
             No six-month rollout. No SAP integration. Pick one area, 
             run it for a month, and see if your handovers get better. They will.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Link href="/dashboard" className="bg-amber-500 hover:bg-amber-400 text-black font-semibold px-7 py-3.5 rounded-lg transition-colors text-[15px]">
+            <Link href="/signin" className="bg-amber-500 hover:bg-amber-400 text-black font-semibold px-7 py-3.5 rounded-lg transition-colors text-[15px]">
               Request a demo
             </Link>
             <a href="mailto:hello@mineshift.com" className="text-[15px] text-gray-400 hover:text-white transition-colors font-medium">
