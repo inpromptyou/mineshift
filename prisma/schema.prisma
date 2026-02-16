@@ -1,0 +1,248 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id       String @id @default(cuid())
+  name     String
+  email    String @unique
+  role     UserRole @default(OPERATOR)
+  siteId   String
+  site     Site   @relation(fields: [siteId], references: [id])
+  
+  // Audit fields
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  actorOps  Op[]   @relation("ActorOps")
+  shifts    Shift[]
+  actions   Action[]
+  
+  @@map("users")
+}
+
+model Site {
+  id       String @id @default(cuid())
+  name     String
+  region   String
+  timezone String @default("UTC")
+  
+  // Audit fields
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  users    User[]
+  shifts   Shift[]
+  assets   Asset[]
+  ops      Op[]
+  
+  @@map("sites")
+}
+
+model Op {
+  // Core op-log fields (immutable)
+  opId       String   @id // ULID
+  deviceId   String
+  actorId    String
+  ts         BigInt   // client timestamp (milliseconds)
+  lamport    Int      // logical clock for ordering
+  
+  // Operation details
+  entityType EntityType
+  entityId   String
+  kind       OpKind
+  path       String?  // e.g. "production.tonnes" for nested updates
+  value      Json?    // the actual value/change
+  
+  // Hash chain for tamper-evidence
+  prevHash   String?  // hash of previous op in chain
+  hash       String   // hash of this op
+  
+  // Server metadata
+  receivedAt DateTime @default(now())
+  siteId     String
+  
+  // Relations
+  actor      User     @relation("ActorOps", fields: [actorId], references: [id])
+  site       Site     @relation(fields: [siteId], references: [id])
+  
+  // Indexes for efficient querying
+  @@index([entityType, entityId])
+  @@index([actorId, ts])
+  @@index([siteId, receivedAt])
+  @@index([lamport])
+  
+  @@map("ops")
+}
+
+// Materialized views for current state (rebuilt from ops)
+model Shift {
+  id          String      @id @default(cuid())
+  shiftId     String      @unique // business key, can be different from PK
+  siteId      String
+  
+  // Shift metadata
+  shiftType   ShiftType
+  startTime   DateTime
+  endTime     DateTime?
+  status      ShiftStatus @default(OPEN)
+  
+  // Handover sections
+  safety      Json        // Safety section data
+  production  Json        // Production metrics
+  equipment   Json        // Equipment status
+  issues      Json        // Issues and concerns
+  
+  // Meta
+  createdBy   String
+  createdAt   DateTime    @default(now())
+  lastSyncAt  DateTime    @default(now())
+  version     Int         @default(1)
+  
+  // Relations
+  site        Site        @relation(fields: [siteId], references: [id])
+  creator     User        @relation(fields: [createdBy], references: [id])
+  actions     Action[]
+  
+  @@index([siteId, startTime])
+  @@index([status])
+  @@map("shifts")
+}
+
+model Action {
+  id          String       @id @default(cuid())
+  shiftId     String?
+  
+  // Action details
+  title       String
+  description String?
+  priority    Priority     @default(MEDIUM)
+  status      ActionStatus @default(OPEN)
+  dueTime     DateTime?
+  category    String?      // e.g. "safety", "maintenance"
+  
+  // Assignment
+  assignedTo  String
+  assignedBy  String
+  evidence    Json?        // photos, documents, etc.
+  
+  // Audit
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  completedAt DateTime?
+  
+  // Relations
+  shift       Shift?       @relation(fields: [shiftId], references: [id])
+  assignee    User         @relation(fields: [assignedTo], references: [id])
+  
+  @@index([assignedTo, status])
+  @@index([dueTime])
+  @@map("actions")
+}
+
+model Asset {
+  id         String      @id @default(cuid())
+  name       String
+  area       String      // mining area/location
+  assetType  AssetType
+  status     AssetStatus @default(OPERATIONAL)
+  siteId     String
+  
+  // Technical details
+  model      String?
+  serialNo   String?
+  lastMaint  DateTime?
+  nextMaint  DateTime?
+  
+  // Current metrics (rebuilt from ops)
+  metrics    Json        // performance metrics, readings, etc.
+  
+  // Audit
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  
+  // Relations
+  site       Site        @relation(fields: [siteId], references: [id])
+  
+  @@index([siteId, area])
+  @@index([status])
+  @@map("assets")
+}
+
+// Enums
+enum UserRole {
+  OPERATOR
+  SUPERVISOR
+  MANAGER
+  ADMIN
+}
+
+enum EntityType {
+  shift
+  action
+  entry
+  asset
+}
+
+enum OpKind {
+  create
+  update
+  append
+  transition
+  signoff
+}
+
+enum ShiftType {
+  DAY
+  NIGHT
+  SWING
+}
+
+enum ShiftStatus {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ActionStatus {
+  OPEN
+  IN_PROGRESS
+  CLOSED
+  CANCELLED
+}
+
+enum AssetType {
+  EXCAVATOR
+  HAUL_TRUCK
+  DRILL
+  DOZER
+  LOADER
+  CRUSHER
+  CONVEYOR
+  OTHER
+}
+
+enum AssetStatus {
+  OPERATIONAL
+  DOWN
+  MAINTENANCE
+  STANDBY
+}
