@@ -28,8 +28,8 @@ export default function HomePage() {
         {/* Background image */}
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=1920&q=80&auto=format" 
-            alt="Mining operations"
+            src="https://images.unsplash.com/photo-1562078809-c5391dc9f390?w=1920&q=80&auto=format" 
+            alt="Open pit mine operations"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0C] via-[#0A0A0C]/90 to-[#0A0A0C]/60"></div>
@@ -43,13 +43,13 @@ export default function HomePage() {
               <span className="text-[12px] text-amber-400 font-medium">Purpose-built for mining operations</span>
             </div>
             <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-tight mb-6">
-              Shift handover that<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">never drops the ball</span>
+              Your shift handover<br />
+              <span className="text-amber-500">actually works now</span>
             </h1>
             <p className="text-lg text-gray-300 leading-relaxed max-w-xl mb-10">
-              MineShift replaces Word docs, emails, and verbal handovers with a structured, 
-              offline-first system. Audit-grade logs. Zero information loss. 
-              Built for Australian mining operations.
+              No more Word docs. No more &quot;I thought you told night shift.&quot; 
+              MineShift gives every crew a structured, searchable handover that works 
+              offline and holds up under audit.
             </p>
             <div className="flex items-center gap-4">
               <Link href="/dashboard" className="bg-amber-500 hover:bg-amber-400 text-black font-semibold px-7 py-3.5 rounded-lg transition-colors text-[15px]">
@@ -93,11 +93,12 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <p className="text-[13px] text-amber-500 font-medium uppercase tracking-widest mb-4">The problem</p>
-              <h2 className="text-3xl font-bold tracking-tight mb-6">Shift handover is broken</h2>
+              <h2 className="text-3xl font-bold tracking-tight mb-6">You already know this is broken</h2>
               <p className="text-gray-400 leading-relaxed mb-8">
-                Every mine site runs 2-3 handovers per day. Most still use Word documents, 
-                emails, or verbal updates. Information gets lost. Actions slip through the cracks. 
-                Auditors find gaps.
+                Night shift didn&apos;t mention the bearing temp on Crusher 2. 
+                The action from Tuesday never got closed out. 
+                The auditor wants to know who signed off on the risk assessment. 
+                Sound familiar?
               </p>
               <div className="space-y-5">
                 {[
@@ -117,8 +118,8 @@ export default function HomePage() {
             </div>
             <div className="relative rounded-2xl overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80&auto=format" 
-                alt="Mining truck at sunset"
+                src="https://images.unsplash.com/photo-1580058572462-98e2c0e0e2f0?w=800&q=80&auto=format" 
+                alt="Mining haul truck"
                 className="w-full h-[500px] object-cover rounded-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0C]/60 to-transparent rounded-2xl"></div>
@@ -134,24 +135,24 @@ export default function HomePage() {
             <p className="text-[13px] text-amber-500 font-medium uppercase tracking-widest mb-4">Features</p>
             <h2 className="text-3xl font-bold tracking-tight mb-4">Built for how mines actually work</h2>
             <p className="text-gray-400 leading-relaxed max-w-2xl mx-auto">
-              Not another generic workflow tool with a mining template bolted on. 
-              MineShift is designed from the ground up for site operations.
+              This isn&apos;t ServiceNow with a mining skin. It&apos;s built for supervisors 
+              who work in 45-degree heat and need something that works when the network doesn&apos;t.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { 
-                img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80&auto=format',
+                img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80&auto=format',
                 title: 'Structured handover',
                 desc: 'Safety, production, equipment, and issues — pre-built sections that match how your crews actually talk.',
               },
               { 
-                img: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80&auto=format',
+                img: 'https://images.unsplash.com/photo-1557761469-7eb05db7abd5?w=600&q=80&auto=format',
                 title: 'Offline-first architecture',
                 desc: 'Works underground, in the pit, or during outages. Data syncs automatically when connectivity returns.',
               },
               { 
-                img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80&auto=format',
+                img: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80&auto=format',
                 title: 'Immutable audit trail',
                 desc: 'Every entry is cryptographically hashed and timestamped. Tamper-evident by design.',
               },
@@ -191,10 +192,10 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-[13px] text-amber-500 font-medium uppercase tracking-widest mb-4">Interface</p>
-              <h2 className="text-3xl font-bold tracking-tight mb-6">Designed for tough conditions</h2>
+              <h2 className="text-3xl font-bold tracking-tight mb-6">Looks like this on your iPad</h2>
               <p className="text-gray-400 leading-relaxed mb-8">
-                Large touch targets for iPad use in harsh environments. Dark theme that works 
-                in bright sunlight and underground. Clear status indicators at a glance.
+                Big buttons because gloves exist. Dark screen because the Pilbara sun 
+                doesn&apos;t care about your UI. Everything a supervisor needs, nothing they don&apos;t.
               </p>
               <div className="space-y-4">
                 {[
@@ -268,15 +269,15 @@ export default function HomePage() {
       {/* Full-width image break */}
       <section className="relative h-[400px]">
         <img 
-          src="https://images.unsplash.com/photo-1578319439584-104c94d37305?w=1920&q=80&auto=format" 
-          alt="Open pit mine aerial view"
+          src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=1920&q=80&auto=format" 
+          alt="Aerial view of mine site"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-[#0A0A0C]/70"></div>
         <div className="absolute inset-0 flex items-center justify-center text-center">
           <div className="max-w-2xl px-6">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Trusted by operations teams across Australia</h2>
-            <p className="text-gray-300 leading-relaxed">From the Pilbara to the Goldfields, MineShift is built for the conditions your teams work in every day.</p>
+            <h2 className="text-3xl font-bold tracking-tight mb-4">Built for Australian conditions</h2>
+            <p className="text-gray-300 leading-relaxed">Pilbara heat. Goldfields dust. Underground dead zones. If your crew can get there, MineShift works there.</p>
           </div>
         </div>
       </section>
@@ -329,17 +330,17 @@ export default function HomePage() {
       <section className="py-24 relative">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1595429035839-c99c298ffdde?w=1920&q=80&auto=format" 
-            alt="Mining equipment at dusk"
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920&q=80&auto=format" 
+            alt="Industrial mining landscape"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-[#0A0A0C]/85"></div>
         </div>
         <div className="relative max-w-2xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Stop losing information between shifts</h2>
+          <h2 className="text-3xl font-bold tracking-tight mb-4">Try it on one crew. See what happens.</h2>
           <p className="text-gray-300 mb-10 leading-relaxed">
-            MineShift deploys in days, not months. No SAP integration required. 
-            Start with one area, prove the value, then scale across your operation.
+            No six-month rollout. No SAP integration. Pick one area, 
+            run it for a month, and see if your handovers get better. They will.
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link href="/dashboard" className="bg-amber-500 hover:bg-amber-400 text-black font-semibold px-7 py-3.5 rounded-lg transition-colors text-[15px]">
