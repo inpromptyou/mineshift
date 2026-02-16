@@ -22,7 +22,7 @@ const sections: Section[] = [
   {
     id: 'safety',
     title: 'Safety',
-    icon: '🛡️',
+    icon: '',
     fields: [
       { key: 'incidents', label: 'Incidents This Shift', type: 'number', placeholder: '0' },
       { key: 'nearMisses', label: 'Near Misses', type: 'number', placeholder: '0' },
@@ -36,7 +36,7 @@ const sections: Section[] = [
   {
     id: 'production',
     title: 'Production',
-    icon: '📊',
+    icon: '',
     fields: [
       { key: 'tonnesMined', label: 'Tonnes Mined', type: 'number', unit: 't', placeholder: '0' },
       { key: 'tonnesHauled', label: 'Tonnes Hauled', type: 'number', unit: 't', placeholder: '0' },
@@ -52,7 +52,7 @@ const sections: Section[] = [
   {
     id: 'equipment',
     title: 'Equipment',
-    icon: '🔧',
+    icon: '',
     fields: [
       { key: 'excavatorsOp', label: 'Excavators Operational', type: 'number', placeholder: '0' },
       { key: 'excavatorsDown', label: 'Excavators Down', type: 'number', placeholder: '0' },
@@ -67,7 +67,7 @@ const sections: Section[] = [
   {
     id: 'issues',
     title: 'Issues & Actions',
-    icon: '⚠️',
+    icon: '',
     fields: [
       { key: 'newIssues', label: 'New Issues', type: 'textarea', placeholder: 'Describe any new issues raised this shift...' },
       { key: 'escalations', label: 'Escalations', type: 'textarea', placeholder: 'Issues escalated to management...' },
@@ -104,24 +104,21 @@ export default function HandoverForm({ onSubmit, initialData }: HandoverFormProp
   return (
     <div className="space-y-3">
       {sections.map(section => (
-        <div key={section.id} className="bg-[#1a1a1f] border border-[#2a2a30] rounded-lg overflow-hidden">
+        <div key={section.id} className="bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden">
           <button
             onClick={() => toggleSection(section.id)}
             className="w-full flex items-center justify-between p-4 hover:bg-white/[0.02] transition-colors"
           >
-            <div className="flex items-center gap-3">
-              <span className="text-xl">{section.icon}</span>
-              <span className="text-white font-medium">{section.title}</span>
-            </div>
+            <span className="text-[14px] text-white font-medium">{section.title}</span>
             <svg className={`w-5 h-5 text-gray-500 transition-transform ${openSections.includes(section.id) ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
           {openSections.includes(section.id) && (
-            <div className="px-4 pb-4 space-y-4 border-t border-[#2a2a30]">
+            <div className="px-4 pb-4 space-y-4 border-t border-white/[0.06]">
               {section.fields.map(field => (
                 <div key={field.key} className="pt-3">
-                  <label className="block text-sm text-gray-400 mb-1.5">
+                  <label className="block text-[13px] text-gray-500 mb-1.5">
                     {field.label} {field.unit && <span className="text-gray-600">({field.unit})</span>}
                   </label>
                   {field.type === 'textarea' ? (
@@ -130,13 +127,13 @@ export default function HandoverForm({ onSubmit, initialData }: HandoverFormProp
                       onChange={e => updateField(section.id, field.key, e.target.value)}
                       placeholder={field.placeholder}
                       rows={3}
-                      className="w-full bg-[#111114] border border-[#2a2a30] rounded-lg px-3 py-2.5 text-white placeholder-gray-600 text-sm focus:outline-none focus:border-amber-500/50 resize-none"
+                      className="w-full bg-[#0A0A0C] border border-white/[0.08] rounded-lg px-3 py-2.5 text-white placeholder-gray-700 text-[14px] focus:outline-none focus:border-amber-500/40 resize-none"
                     />
                   ) : field.type === 'select' ? (
                     <select
                       value={formData[section.id]?.[field.key] || ''}
                       onChange={e => updateField(section.id, field.key, e.target.value)}
-                      className="w-full bg-[#111114] border border-[#2a2a30] rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-amber-500/50"
+                      className="w-full bg-[#0A0A0C] border border-white/[0.08] rounded-lg px-3 py-2.5 text-white text-[14px] focus:outline-none focus:border-amber-500/40"
                     >
                       <option value="">Select...</option>
                       {field.options?.map(opt => <option key={opt} value={opt}>{opt}</option>)}
@@ -147,7 +144,7 @@ export default function HandoverForm({ onSubmit, initialData }: HandoverFormProp
                       value={formData[section.id]?.[field.key] || ''}
                       onChange={e => updateField(section.id, field.key, e.target.value)}
                       placeholder={field.placeholder}
-                      className="w-full bg-[#111114] border border-[#2a2a30] rounded-lg px-3 py-2.5 text-white placeholder-gray-600 text-sm font-mono focus:outline-none focus:border-amber-500/50"
+                      className="w-full bg-[#0A0A0C] border border-white/[0.08] rounded-lg px-3 py-2.5 text-white placeholder-gray-700 text-[14px] font-mono focus:outline-none focus:border-amber-500/40"
                     />
                   )}
                 </div>
@@ -158,7 +155,7 @@ export default function HandoverForm({ onSubmit, initialData }: HandoverFormProp
       ))}
       <button
         onClick={handleSubmit}
-        className="w-full bg-amber-500 hover:bg-amber-600 text-black font-semibold py-3 rounded-lg transition-colors text-sm mt-4"
+        className="w-full bg-amber-500 hover:bg-amber-400 text-black font-semibold py-3 rounded-lg transition-colors text-[14px] mt-4"
       >
         Save Shift Handover
       </button>
